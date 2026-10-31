@@ -5,10 +5,15 @@ scripted macOS + Fedora setup at `~/.config/Juliet`. This is the shared
 baseline for anyone running Juliet; Kyle's personal tooling lives in the
 `avegancafe` plugin.
 
+It lives in its own repo, [`avegancafe/claude-plugin-juliet`](https://github.com/avegancafe/claude-plugin-juliet),
+and is listed in [`avegancafe-marketplace`](https://github.com/avegancafe/avegancafe-marketplace)
+(it was vendored there under `plugins/juliet/` until 1.0.0; its history came with it).
+
 ## Install
 
 ```bash
-/plugin install juliet --marketplace avegancafe/avegancafe-marketplace
+/plugin marketplace add avegancafe/avegancafe-marketplace
+/plugin install juliet@avegancafe-marketplace
 ```
 
 ## Agent
@@ -29,3 +34,18 @@ baseline for anyone running Juliet; Kyle's personal tooling lives in the
 | `add-fish-alias` | Create a fish alias or function. |
 
 Skills use absolute `~/.config/Juliet/...` paths, so they work from any directory.
+
+## Releasing
+
+Bump `version` in [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) and merge to `main`.
+[`release.yml`](.github/workflows/release.yml) then sends a `plugin-released` event to
+`avegancafe-marketplace`, whose sync workflow updates this plugin's entry there.
+
+It needs the `MARKETPLACE_DISPATCH_TOKEN` repo secret: a fine-grained PAT scoped to
+`avegancafe/avegancafe-marketplace` only, with Contents read & write.
+
+```bash
+gh secret set MARKETPLACE_DISPATCH_TOKEN -R avegancafe/claude-plugin-juliet
+```
+
+Without it the release run fails and the marketplace entry stops tracking new versions.
