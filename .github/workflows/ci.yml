@@ -21,6 +21,9 @@ jobs:
           npm install -g @anthropic-ai/claude-code
           claude plugin validate .
 
+      - name: Test the bamboo mod
+        run: claude plugin test .
+
       - name: noelle preloads every skill
         run: |
           missing=0

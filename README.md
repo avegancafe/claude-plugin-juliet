@@ -35,6 +35,32 @@ and is listed in [`avegancafe-marketplace`](https://github.com/avegancafe/avegan
 
 Skills use absolute `~/.config/Juliet/...` paths, so they work from any directory.
 
+## Mod: bamboo
+
+Juliet puts the Bamboo theme on every app. `bamboo` does the same for Claude Code,
+from [bamboo.nvim](https://github.com/ribru17/bamboo.nvim)'s palette as Juliet uses it.
+
+| Where | What you get | How it turns on |
+|-------|--------------|-----------------|
+| Desktop and mobile apps | A whole look, light and dark: Bamboo's backgrounds, cream text and green accent. Dark is `vulgaris`; light is cream paper with moss. | By itself, when a session starts. |
+| Terminal | A `Bamboo` theme for the dark terminal Juliet sets up. | Pick **Bamboo** in `/theme`, once. |
+
+The terminal theme is stored as `"theme": "custom:juliet:bamboo"` in settings.
+
+To keep the apps' own look, turn off **Paint the desktop and mobile apps in Bamboo**
+in `/config`. It applies from the next session.
+
+| File | Purpose |
+|------|---------|
+| [`hooks/bamboo.ts`](hooks/bamboo.ts) | The hooks module: sets the look at `session.start`. |
+| [`hooks/bamboo-look.ts`](hooks/bamboo-look.ts) | The palette, mapped onto the apps' design system. Change colors here. |
+| `hooks/make-colors.js`, `.d.ts` | Claude Code's own generator, copied as is. Copy it again from the `plugin-authoring` skill when Claude Code updates. |
+| [`themes/bamboo.json`](themes/bamboo.json) | The terminal theme. |
+| [`tests/bamboo.test.ts`](tests/bamboo.test.ts) | Run with `claude plugin test .` |
+
+The tests can't see paint. After a color change, look at the desktop app in both
+modes, with a long code block on screen.
+
 ## Releasing
 
 Bump `version` in [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) and merge to `main`.
