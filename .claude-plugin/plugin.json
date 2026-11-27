@@ -1,11 +1,19 @@
 {
   "name": "juliet",
-  "version": "1.0.1",
-  "description": "Claude Code tooling for Juliet (avegancafe/Juliet), the scripted macOS + Fedora setup: the noelle agent (\"I'm changing my computer config\") and the skills it preloads — juliet-config, juliet-extension, juliet-cross-platform, juliet-bootstrap-step, add-app-config and add-fish-alias. Shared baseline for anyone running Juliet; personal tooling lives in other plugins.",
+  "version": "1.1.0",
+  "description": "Claude Code tooling for Juliet (avegancafe/Juliet), the scripted macOS + Fedora setup: the noelle agent (\"I'm changing my computer config\"), the skills it preloads — juliet-config, juliet-extension, juliet-cross-platform, juliet-bootstrap-step, add-app-config and add-fish-alias — and bamboo, a mod that paints Claude Code in Juliet's Bamboo theme. Shared baseline for anyone running Juliet; personal tooling lives in other plugins.",
   "author": {
     "name": "Kyle Holzinger",
     "url": "https://github.com/avegancafe"
   },
   "homepage": "https://github.com/avegancafe/claude-plugin-juliet",
-  "repository": "https://github.com/avegancafe/claude-plugin-juliet"
+  "repository": "https://github.com/avegancafe/claude-plugin-juliet",
+  "userConfig": {
+    "bambooLook": {
+      "type": "boolean",
+      "title": "Paint the desktop and mobile apps in Bamboo",
+      "description": "Sets the Bamboo look when a session starts. Turning it off applies from the next session. The terminal is not affected: there, pick Bamboo in /theme.",
+      "default": true
+    }
+  }
 }
